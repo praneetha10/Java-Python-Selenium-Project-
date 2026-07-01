@@ -13,7 +13,7 @@ public class Basicform {
 			driver. get("https://www.sreenidhirajakrishnan.com/practice?utm_source");
 			System.out.println(driver.getTitle());
 			
-			driver.quit();
+			driver.close();
 			
 			
 	}
