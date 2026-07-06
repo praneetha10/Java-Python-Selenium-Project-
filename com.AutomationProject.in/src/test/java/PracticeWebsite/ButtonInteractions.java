@@ -88,13 +88,25 @@ public class ButtonInteractions {
 			Assert.assertTrue(delayedbutton.isEnabled());
 		}
 		
+		//Toggle button( text change on each click )
 		
+		//Initial label → "Original Label"
+		//After click → "Clicked Label"
+		//Click again → back to "Original Label"
 		
-		
-		
-		
-		
-
+		// capture inital text
+		WebElement button=driver.findElement(By.cssSelector("button[aria-label='Relabel button']"));
+		String initialText=button.getText();
+		Assert.assertEquals(initialText,"Original Label");
+		//Click and validate change text 
+		button.click();
+		WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(5));
+		wait.until(ExpectedConditions.textToBePresentInElement(button,"Clicked Label"));
+		Assert.assertEquals(button.getText(),"Clicked Label");
+		//Click again and validate it toggles back
+		button.click();
+		wait.until(ExpectedConditions.textToBePresentInElement(button,"Original Label"));
+		Assert.assertEquals(button.getText(),"Original Label");
 	}
 
 }
